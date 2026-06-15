@@ -222,6 +222,79 @@ a{ color:inherit; text-decoration:none; }
 }
 
 /* =========================================================
+   GALERIA / CARROSSEL (rolagem automática fluida — CSS puro)
+   ========================================================= */
+.gallery{
+  padding:24px 0 6px;
+  background:var(--sand);
+  overflow:hidden;
+}
+.gallery__head{
+  text-align:center;
+  padding:0 18px 14px;
+}
+.gallery__head h2{
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:1.6rem;
+  line-height:1.1;
+  color:var(--ink);
+  margin-top:4px;
+}
+.gallery__head h2 .u{
+  background:linear-gradient(180deg,transparent 62%, #FFD98A 62%);
+}
+
+/* trilho com máscara nas bordas p/ efeito “fade” */
+.carousel{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+          mask-image:linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+.carousel__track{
+  display:flex;
+  gap:14px;
+  width:max-content;
+  padding:6px 14px;
+  list-style:none;
+  /* rolagem contínua, linear e suave (acelerada por GPU) */
+  animation:carouselScroll 56s linear infinite;
+  will-change:transform;
+}
+/* pausa ao tocar / passar o mouse */
+.carousel:hover .carousel__track,
+.carousel:active .carousel__track,
+.carousel:focus-within .carousel__track{ animation-play-state:paused; }
+
+.carousel__item{
+  flex:0 0 auto;
+  width:208px;            /* modo retrato */
+  aspect-ratio:3 / 4;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--sand-2);
+  border:3px solid #fff;
+  box-shadow:var(--shadow);
+}
+.carousel__item img{
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* desloca exatamente metade do trilho (1 conjunto) = loop perfeito */
+@keyframes carouselScroll{
+  from{ transform:translateX(0); }
+  to{   transform:translateX(-50%); }
+}
+
+@media (min-width:560px){
+  .carousel__item{ width:230px; }
+}
+
+/* =========================================================
    SEÇÃO DE PASSEIOS
    ========================================================= */
 .section{ padding:26px 18px 8px; }
@@ -285,6 +358,8 @@ a{ color:inherit; text-decoration:none; }
   border-radius:16px;
   display:grid; place-items:center;
   color:#fff;
+  font-size:30px;          /* tamanho do emoji */
+  line-height:1;
   box-shadow:var(--shadow-sm);
 }
 .tour__icon svg{ width:30px; height:30px; }
@@ -537,4 +612,8 @@ a{ color:inherit; text-decoration:none; }
 
 @media (prefers-reduced-motion:reduce){
   *{ animation:none !important; scroll-behavior:auto !important; transition:none !important; }
+  /* sem auto-rolagem: o usuário desliza o carrossel manualmente */
+  .carousel{ overflow-x:auto; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; }
+  .carousel__track{ transform:none; }
+  .carousel__item{ scroll-snap-align:center; }
 }
