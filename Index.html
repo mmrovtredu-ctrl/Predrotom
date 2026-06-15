@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Petom Tur – Tutóia, Maranhão</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sun: #FFD000;
+    --coral: #FF5733;
+    --ocean: #0077B6;
+    --sea: #00B4D8;
+    --sand: #FFF3C4;
+    --palm: #2D6A4F;
+    --foam: #E8F8FF;
+    --dark: #0D1B2A;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    max-width: 430px;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 100svh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 2.5rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, #1a3a5c 0%, #0077B6 40%, #00B4D8 70%, #AEF3FF 100%);
+  }
+
+  /* Animated sun */
+  .sun {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FFF176 0%, #FFD000 50%, #FF8C00 100%);
+    box-shadow: 0 0 60px 20px rgba(255,208,0,0.5), 0 0 120px 40px rgba(255,140,0,0.25);
+    animation: pulse-sun 3s ease-in-out infinite;
+  }
+  @keyframes pulse-sun {
+    0%,100% { box-shadow: 0 0 60px 20px rgba(255,208,0,0.5), 0 0 120px 40px rgba(255,140,0,0.25); }
+    50%      { box-shadow: 0 0 80px 30px rgba(255,208,0,0.7), 0 0 160px 60px rgba(255,140,0,0.35); }
+  }
+
+  /* Seagulls */
+  .birds { position: absolute; top: 18%; left: 0; right: 0; }
+  .bird {
+    position: absolute;
+    width: 18px; height: 8px;
+    border-top: 3px solid rgba(255,255,255,0.9);
+    border-radius: 50% 50% 0 0;
+    animation: fly 6s linear infinite;
+  }
+  .bird::after {
+    content: '';
+    position: absolute;
+    right: -18px; top: 0;
+    width: 18px; height: 8px;
+    border-top: 3px solid rgba(255,255,255,0.9);
+    border-radius: 50% 50% 0 0;
+  }
+  .bird:nth-child(1) { left: 15%; animation-delay: 0s; }
+  .bird:nth-child(2) { left: 25%; animation-delay: 0.8s; transform: scale(0.7); }
+  .bird:nth-child(3) { left: 60%; animation-delay: 1.5s; transform: scale(0.85); }
+  .bird:nth-child(4) { left: 72%; animation-delay: 0.3s; transform: scale(0.6); }
+  @keyframes fly {
+    0%,100% { transform: translateY(0) scaleY(1); }
+    50%      { transform: translateY(-6px) scaleY(0.6); }
+  }
+
+  /* Kite */
+  .kite-wrap {
+    position: absolute;
+    top: 28%;
+    right: 14%;
+    animation: kite-float 4s ease-in-out infinite;
+  }
+  @keyframes kite-float {
+    0%,100% { transform: translate(0, 0) rotate(5deg); }
+    50%      { transform: translate(-8px, -12px) rotate(-3deg); }
+  }
+  .kite {
+    width: 38px; height: 50px;
+    position: relative;
+  }
+  .kite-body {
+    width: 0; height: 0;
+    border-left: 19px solid transparent;
+    border-right: 19px solid transparent;
+    border-bottom: 50px solid #FF5733;
+    position: relative;
+  }
+  .kite-body::after {
+    content: '';
+    position: absolute;
+    top: 18px; left: -19px;
+    width: 0; height: 0;
+    border-left: 19px solid transparent;
+    border-right: 19px solid transparent;
+    border-top: 32px solid rgba(0,0,0,0.15);
+  }
+  .kite-cross-h {
+    position: absolute;
+    top: 20px; left: 0; right: 0;
+    height: 2px;
+    background: rgba(255,255,255,0.5);
+  }
+  .kite-tail {
+    position: absolute;
+    top: 50px; left: 50%;
+    width: 2px;
+    height: 55px;
+    background: rgba(255,255,255,0.6);
+    transform-origin: top;
+    animation: tail-wave 2s ease-in-out infinite;
+  }
+  .kite-tail::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: -4px;
+    width: 10px; height: 6px;
+    background: var(--sun);
+    border-radius: 50%;
+  }
+  @keyframes tail-wave {
+    0%,100% { transform: rotate(-5deg); }
+    50%      { transform: rotate(8deg); }
+  }
+
+  /* Waves */
+  .waves {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 140px;
+    overflow: hidden;
+  }
+  .wave {
+    position: absolute;
+    bottom: 0; left: -50%;
+    width: 200%;
+    height: 100%;
+    border-radius: 43% 57% 40% 60% / 45% 40% 55% 50%;
+    opacity: 0.7;
+  }
+  .wave-1 { background: rgba(0,180,216,0.6); animation: wave 7s linear infinite; }
+  .wave-2 { background: rgba(0,119,182,0.5); animation: wave 10s linear infinite reverse; height: 80%; }
+  .wave-3 { background: rgba(13,27,42,0.9); animation: wave 8s linear infinite; height: 60%; bottom: -10px; }
+  @keyframes wave {
+    0%   { transform: translateX(0) rotate(0); }
+    100% { transform: translateX(25%) rotate(360deg); }
+  }
+
+  /* Buggy silhouette */
+  .buggy-silhouette {
+    position: absolute;
+    bottom: 85px;
+    left: 8%;
+    opacity: 0.35;
+    font-size: 3rem;
+    animation: buggy-roll 12s linear infinite;
+  }
+  @keyframes buggy-roll {
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(30px); }
+    100% { transform: translateX(0); }
+  }
+
+  .hero-content { position: relative; z-index: 5; text-align: center; padding: 0 1.5rem; }
+
+  .logo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(8px);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+  }
+  .logo-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sun); animation: pulse-dot 1.5s infinite; }
+  @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
+
+  .hero-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.2rem;
+    line-height: 1.1;
+    color: var(--white);
+    text-shadow: 0 3px 20px rgba(0,0,0,0.4);
+    margin-bottom: 0.3rem;
+  }
+  .hero-title span { color: var(--sun); }
+
+  .hero-sub {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.6rem;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--sun);
+    color: var(--dark);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 0.95rem;
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    box-shadow: 0 6px 30px rgba(255,208,0,0.6);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none; cursor: pointer;
+  }
+  .hero-cta:active { transform: scale(0.96); }
+  .hero-cta svg { animation: bounce-arrow 1.5s ease-in-out infinite; }
+  @keyframes bounce-arrow {
+    0%,100%{transform:translateY(0)} 50%{transform:translateY(4px)}
+  }
+
+  /* ── SCROLL INDICATOR ── */
+  .scroll-hint {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    opacity: 0.6;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    z-index: 5;
+  }
+  .scroll-hint-bar {
+    width: 2px; height: 30px;
+    background: linear-gradient(to bottom, transparent, white);
+    animation: scroll-bar 1.5s ease-in-out infinite;
+  }
+  @keyframes scroll-bar { 0%{opacity:0;transform:scaleY(0)} 50%{opacity:1;transform:scaleY(1)} 100%{opacity:0;transform:scaleY(0)} }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 2.5rem 1.25rem; }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--sea);
+    margin-bottom: 0.5rem;
+  }
+  .section-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 18px; height: 2px;
+    background: var(--sea);
+  }
+
+  .section-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+  .section-title span { color: var(--sun); }
+
+  .section-desc {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+  }
+
+  /* ── PASSEIOS MENU ── */
+  #passeios { background: var(--dark); }
+
+  .tour-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .tour-card {
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    padding: 1rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .tour-card:active { transform: scale(0.98); background: rgba(0,180,216,0.12); border-color: var(--sea); }
+
+  .tour-icon {
+    width: 50px; height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .tour-info { flex: 1; min-width: 0; }
+  .tour-name { font-weight: 800; font-size: 0.9rem; color: var(--white); }
+  .tour-tag  { font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+  .tour-price {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .tour-price .value { font-weight: 900; font-size: 1rem; color: var(--sun); display: block; }
+  .tour-price .label { font-size: 0.6rem; color: rgba(255,255,255,0.45); text-transform: uppercase; }
+
+  .tour-arrow {
+    color: rgba(255,255,255,0.3);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(13,27,42,0.85);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+    align-items: flex-end;
+  }
+  .modal-overlay.active { display: flex; }
+
+  .modal-sheet {
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+    background: #0f2235;
+    border-radius: 28px 28px 0 0;
+    padding: 0 1.25rem 2.5rem;
+    max-height: 90svh;
+    overflow-y: auto;
+    animation: slide-up 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes slide-up {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
+
+  .modal-handle {
+    width: 40px; height: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    margin: 1rem auto 1.5rem;
+  }
+
+  .modal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
+  }
+
+  .modal-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.9rem;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+    line-height: 1.15;
+  }
+  .modal-subtitle {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .modal-sections { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.8rem; }
+
+  .modal-row {
+    background: rgba(255,255,255,0.05);
+    border-radius: 14px;
+    padding: 0.9rem 1rem;
+  }
+  .modal-row-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sea);
+    margin-bottom: 0.3rem;
+  }
+  .modal-row-text {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+  }
+
+  .modal-price-box {
+    background: linear-gradient(135deg, var(--palm), #1a4a35);
+    border-radius: 18px;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .modal-price-main { font-family: 'Pacifico', cursive; font-size: 2.2rem; color: var(--sun); }
+  .modal-price-per  { font-size: 0.7rem; color: rgba(255,255,255,0.6); font-weight: 700; text-transform: uppercase; margin-top: 2px; }
+
+  .btn-wpp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    background: #25D366;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    padding: 1rem;
+    border-radius: 14px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.2s;
+  }
+  .btn-wpp:active { filter: brightness(0.9); }
+  .btn-wpp svg { flex-shrink: 0; }
+
+  .btn-close-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.6);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.85rem;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    margin-top: 0.7rem;
+  }
+
+  /* ── SOBRE ── */
+  #sobre {
+    background: linear-gradient(180deg, var(--dark) 0%, #0a1e30 100%);
+  }
+
+  .sobre-card {
+    background: rgba(0,119,182,0.12);
+    border: 1.5px solid rgba(0,180,216,0.2);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .badge-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .badge-item {
+    background: rgba(255,255,255,0.05);
+    border-radius: 14px;
+    padding: 1rem;
+    text-align: center;
+  }
+  .badge-icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+  .badge-label { font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.7); line-height: 1.3; }
+
+  /* ── CONTATO ── */
+  #contato {
+    background: linear-gradient(180deg, #0a1e30 0%, #061422 100%);
+    text-align: center;
+  }
+
+  .contact-card {
+    background: linear-gradient(135deg, #1a4a35, #0f5f40);
+    border-radius: 24px;
+    padding: 2rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .contact-card::before {
+    content: '🌊';
+    position: absolute;
+    font-size: 8rem;
+    right: -1.5rem;
+    bottom: -1.5rem;
+    opacity: 0.08;
+  }
+
+  .contact-phone {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.1rem;
+    color: var(--sun);
+    display: block;
+    margin: 0.5rem 0;
+    text-decoration: none;
+  }
+
+  .contact-info {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  .contact-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  .chip {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050d17;
+    text-align: center;
+    padding: 1.5rem 1.25rem;
+  }
+  .footer-logo { font-family: 'Pacifico', cursive; font-size: 1.6rem; color: var(--sea); margin-bottom: 0.3rem; }
+  .footer-cnpj { font-size: 0.65rem; color: rgba(255,255,255,0.3); }
+
+  /* ── STICKY CTA ── */
+  .sticky-wpp {
+    position: fixed;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    z-index: 50;
+    background: #25D366;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+    text-decoration: none;
+    animation: wpp-pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes wpp-pulse {
+    0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+    50%      { box-shadow: 0 6px 36px rgba(37,211,102,0.8), 0 0 0 10px rgba(37,211,102,0.1); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+  <div class="sun"></div>
+
+  <div class="birds">
+    <div class="bird"></div>
+    <div class="bird"></div>
+    <div class="bird"></div>
+    <div class="bird"></div>
+  </div>
+
+  <div class="kite-wrap">
+    <div class="kite">
+      <div class="kite-body"></div>
+      <div class="kite-cross-h"></div>
+    </div>
+    <div class="kite-tail"></div>
+  </div>
+
+  <div class="buggy-silhouette">🚙</div>
+
+  <div class="waves">
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+    <div class="wave wave-3"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="logo-badge">
+      <span class="dot"></span>
+      Tutóia • Maranhão
+    </div>
+    <h1 class="hero-title">Petom<br><span>Tur</span></h1>
+    <p class="hero-sub">Lençóis Tutoienses • Delta do Parnaíba</p>
+    <a href="#passeios" class="hero-cta">
+      Ver Passeios
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-hint-bar"></div>
+    <span>rolar</span>
+  </div>
+</section>
+
+<!-- ── PASSEIOS ── -->
+<section id="passeios">
+  <div class="section-eyebrow">Experiências</div>
+  <h2 class="section-title">Nossos<br><span>Passeios</span></h2>
+  <p class="section-desc">Toque para ver detalhes e valores exclusivos de cada aventura.</p>
+
+  <div class="tour-list">
+
+    <div class="tour-card" onclick="openModal('buggy')">
+      <div class="tour-icon" style="background:rgba(255,87,51,0.15);">🏎️</div>
+      <div class="tour-info">
+        <div class="tour-name">Buggy – Pequenos Lençóis</div>
+        <div class="tour-tag">Exclusivo • Veículo privativo</div>
+      </div>
+      <div class="tour-price">
+        <span class="value">R$ 449</span>
+        <span class="label">veículo</span>
+      </div>
+      <div class="tour-arrow">›</div>
+    </div>
+
+    <div class="tour-card" onclick="openModal('jardineira')">
+      <div class="tour-icon" style="background:rgba(0,180,216,0.15);">🚐</div>
+      <div class="tour-info">
+        <div class="tour-name">Jardineira – Pequenos Lençóis</div>
+        <div class="tour-tag">Compartilhado • Com qualidade</div>
+      </div>
+      <div class="tour-price">
+        <span class="value">R$ 139</span>
+        <span class="label">pessoa</span>
+      </div>
+      <div class="tour-arrow">›</div>
+    </div>
+
+    <div class="tour-card" onclick="openModal('rios')">
+      <div class="tour-icon" style="background:rgba(45,106,79,0.25);">🏞️</div>
+      <div class="tour-info">
+        <div class="tour-name">Circuito Rios – Jardineira</div>
+        <div class="tour-tag">Refúgio natural • Águas doces</div>
+      </div>
+      <div class="tour-price">
+        <span class="value">R$ 169</span>
+        <span class="label">pessoa</span>
+      </div>
+      <div class="tour-arrow">›</div>
+    </div>
+
+    <div class="tour-card" onclick="openModal('lancha')">
+      <div class="tour-icon" style="background:rgba(255,208,0,0.15);">⛵</div>
+      <div class="tour-info">
+        <div class="tour-name">Lancha – Delta & Revoada</div>
+        <div class="tour-tag">Natureza • Pôr do sol</div>
+      </div>
+      <div class="tour-price">
+        <span class="value">R$ 169</span>
+        <span class="label">pessoa</span>
+      </div>
+      <div class="tour-arrow">›</div>
+    </div>
+
+    <div class="tour-card" onclick="openModal('quadriciclo')">
+      <div class="tour-icon" style="background:rgba(255,87,51,0.15);">🏍️</div>
+      <div class="tour-info">
+        <div class="tour-name">Quadriciclo – Com guia</div>
+        <div class="tour-tag">Aventura • Dunas & panoramas</div>
+      </div>
+      <div class="tour-price">
+        <span class="value">R$ 499</span>
+        <span class="label">2 pessoas</span>
+      </div>
+      <div class="tour-arrow">›</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── SOBRE ── -->
+<section id="sobre">
+  <div class="section-eyebrow">Quem somos</div>
+  <h2 class="section-title">Paraíso<br><span>Perdido</span></h2>
+  <p class="section-desc">A Petom Tur leva você aos cantos mais secretos do Maranhão — onde as dunas encontram o delta e o tempo para.</p>
+
+  <div class="sobre-card">
+    <p style="font-size:0.88rem;color:rgba(255,255,255,0.8);line-height:1.65;">
+      Somos uma operadora local credenciada, nascida em Tutóia, com guias que conhecem cada duna, cada igarapé e cada boa maré. Atendemos com atenção pessoal — sem intermediários.
+    </p>
+  </div>
+
+  <div class="badge-grid">
+    <div class="badge-item">
+      <div class="badge-icon">🪁</div>
+      <div class="badge-label">Kite &amp; Buggy nas dunas</div>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon">🌊</div>
+      <div class="badge-label">Delta do Parnaíba</div>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon">✅</div>
+      <div class="badge-label">Guias credenciados</div>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon">🚗</div>
+      <div class="badge-label">Veículos regularizados</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTATO ── -->
+<section id="contato">
+  <div class="section-eyebrow">Contato</div>
+  <h2 class="section-title" style="margin-bottom:1.2rem;">Fale com a<br><span>gente</span></h2>
+
+  <div class="contact-card">
+    <p style="font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.08em;">Atendimento Concierge</p>
+    <a href="tel:+5598981718760" class="contact-phone">(98) 98171-8760</a>
+    <p class="contact-info">Confirmação imediata • Suporte completo<br>Tutóia • Paulino Neves • Barreirinhas</p>
+  </div>
+
+  <a href="https://wa.me/5598981718760?text=Olá!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20os%20passeios%20da%20Petom%20Tur." class="btn-wpp" style="margin-bottom:1.2rem;">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Reservar pelo WhatsApp
+  </a>
+
+  <div class="contact-chips">
+    <div class="chip">☀️ Todos os dias</div>
+    <div class="chip">📍 Tutóia – MA</div>
+    <div class="chip">CNPJ 63.475.310/0001-82</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Petom Tur</div>
+  <div class="footer-cnpj">© 2025 Petom Tur • Guias credenciados • Veículos regularizados</div>
+</footer>
+
+<!-- ── STICKY WPP ── -->
+<a href="https://wa.me/5598981718760?text=Olá!%20Vim%20pelo%20site%20e%20quero%20reservar%20um%20passeio." class="sticky-wpp" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ── MODALS ── -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-sheet" id="modal-sheet">
+    <div class="modal-handle"></div>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const tours = {
+  buggy: {
+    emoji: '🏎️',
+    color: '#FF5733',
+    badge: 'Veículo Exclusivo',
+    title: 'Buggy',
+    sub: 'Pequenos Lençóis',
+    tagline: 'O clássico com conforto e exclusividade',
+    sections: [
+      { label: '📍 Trajeto', text: 'Saída privativa de Tutóia, com percurso costeiro até a Praia dos Félix e as dunas dos Pequenos Lençóis.' },
+      { label: '📸 Paradas', text: 'Dunas panorâmicas, Vila do Arpoador, Praia do Amor, coqueirais e Mirante do Maceió.' },
+      { label: '🕐 Horários', text: 'Manhã: 09h00–13h30 &nbsp;|&nbsp; Tarde: 14h30–18h30.' },
+      { label: '🎉 Incluído', text: 'Boombox, cooler térmico, três águas e saco de gelo.' },
+      { label: '☀️ Recomendações', text: 'Protetor solar, óculos, vestimenta leve e câmera.' },
+    ],
+    price: 'R$ 449,99',
+    per: 'veículo exclusivo',
+    wpp: 'Quero reservar o Buggy – Pequenos Lençóis (R$ 449,99)',
+  },
+  jardineira: {
+    emoji: '🚐',
+    color: '#00B4D8',
+    badge: 'Compartilhado',
+    title: 'Jardineira',
+    sub: 'Pequenos Lençóis',
+    tagline: 'Compartilhado com qualidade',
+    sections: [
+      { label: '📍 Trajeto', text: 'Saída conforme formação de grupo, por praias e trilhas até os principais pontos.' },
+      { label: '📸 Paradas', text: 'Dunas, Vila do Arpoador, Praia do Amor e Mirante do Maceió.' },
+      { label: '☀️ Recomendações', text: 'Chegar com antecedência, levar água e protetor solar.' },
+    ],
+    price: 'R$ 139,99',
+    per: 'por pessoa',
+    wpp: 'Quero reservar a Jardineira – Pequenos Lençóis (R$ 139,99/pessoa)',
+  },
+  rios: {
+    emoji: '🏞️',
+    color: '#2D6A4F',
+    badge: 'Águas Doces',
+    title: 'Circuito Rios',
+    sub: 'Jardineira',
+    tagline: 'Refúgio natural e águas doces',
+    sections: [
+      { label: '📍 Trajeto', text: 'Saída às 09h30, com trechos em asfalto e estrada de chão até os balneários.' },
+      { label: '📸 Paradas', text: 'Rio Santa Rosa, Balneário São Bento e Balneário Sarapó.' },
+      { label: '🔙 Retorno', text: 'Por volta de 14h30.' },
+      { label: '☀️ Recomendações', text: 'Toalha, troca de roupa, repelente. Almoço não incluso.' },
+    ],
+    price: 'R$ 169,99',
+    per: 'por pessoa',
+    wpp: 'Quero reservar o Circuito Rios – Jardineira (R$ 169,99/pessoa)',
+  },
+  lancha: {
+    emoji: '⛵',
+    color: '#FFD000',
+    badge: 'Pôr do Sol',
+    title: 'Lancha',
+    sub: 'Delta & Revoada',
+    tagline: 'Natureza, história e pôr do sol',
+    sections: [
+      { label: '📍 Trajeto', text: 'Embarque às 14h no píer de Tutóia e navegação pelos canais do Delta.' },
+      { label: '📸 Paradas', text: 'Navio Aline Ramos, Praia/Baía da Melancia, igarapés, cemitério de navios e Ilha da Caeira.' },
+      { label: '🔙 Retorno', text: 'Aproximadamente às 18h30, com traslado incluso.' },
+      { label: '☀️ Recomendações', text: 'Capa para celular, protetor solar. Revoada sujeita a condições naturais.' },
+    ],
+    price: 'R$ 169,99',
+    per: 'por pessoa',
+    wpp: 'Quero reservar a Lancha – Delta & Revoada (R$ 169,99/pessoa)',
+  },
+  quadriciclo: {
+    emoji: '🏍️',
+    color: '#FF5733',
+    badge: 'Aventura Guiada',
+    title: 'Quadriciclo',
+    sub: 'Com guia especializado',
+    tagline: 'Aventura guiada com segurança',
+    sections: [
+      { label: '📍 Trajeto', text: 'Saída acompanhada por guia especializado, com percurso ajustado às condições do dia.' },
+      { label: '📸 Paradas', text: 'Pontos panorâmicos e dunas.' },
+      { label: '☀️ Recomendações', text: 'Óculos, protetor solar e seguir as orientações do guia.' },
+    ],
+    price: 'R$ 499,99',
+    per: 'duas pessoas',
+    wpp: 'Quero reservar o Quadriciclo – Com guia (R$ 499,99 / 2 pessoas)',
+  },
+};
+
+function openModal(key) {
+  const t = tours[key];
+  const wppMsg = encodeURIComponent('Olá! Vim pelo site da Petom Tur. ' + t.wpp);
+  const sectionsHtml = t.sections.map(s =>
+    `<div class="modal-row">
+      <div class="modal-row-label">${s.label}</div>
+      <div class="modal-row-text">${s.text}</div>
+    </div>`
+  ).join('');
+
+  document.getElementById('modal-body').innerHTML = `
+    <div class="modal-badge" style="background:${t.color}22;color:${t.color};">
+      ${t.emoji} ${t.badge}
+    </div>
+    <h2 class="modal-title">${t.title} <span style="color:${t.color};">|</span> ${t.sub}</h2>
+    <p class="modal-subtitle">${t.tagline}</p>
+    <div class="modal-sections">${sectionsHtml}</div>
+    <div class="modal-price-box">
+      <div>
+        <div class="modal-price-main">${t.price}</div>
+        <div class="modal-price-per">${t.per}</div>
+      </div>
+      <div style="font-size:2.5rem;">${t.emoji}</div>
+    </div>
+    <a href="https://wa.me/5598981718760?text=${wppMsg}" class="btn-wpp">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Reservar agora
+    </a>
+    <button class="btn-close-modal" onclick="closeModal()">← Voltar ao menu</button>
+  `;
+  document.getElementById('modal-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('modal-overlay')) {
+    document.getElementById('modal-overlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+</script>
+</body>
+</html>
