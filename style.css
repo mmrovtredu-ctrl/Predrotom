@@ -364,6 +364,73 @@ a{ color:inherit; text-decoration:none; }
 }
 .tour__icon svg{ width:30px; height:30px; }
 
+/* miniatura de foto no lugar do emoji — o gradiente vira um anel colorido */
+.tour__icon--photo{
+  padding:3px;
+  overflow:hidden;
+}
+.tour__icon--photo img{
+  width:100%; height:100%;
+  border-radius:13px;
+  object-fit:cover;
+  display:block;
+}
+
+/* ---------- Galeria de fotos do passeio ---------- */
+.tour__gal{
+  display:flex;
+  gap:10px;
+  margin:16px 0 0;
+  padding:2px 18px 12px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-padding-inline:18px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  overscroll-behavior-x:contain;
+}
+.tour__gal::-webkit-scrollbar{ display:none; }
+
+.shot{
+  flex:0 0 auto;
+  width:min(56%, 178px);
+  aspect-ratio:3 / 4;
+  margin:0;
+  border-radius:16px;
+  overflow:hidden;
+  background:var(--sand-2);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-sm);
+  scroll-snap-align:start;
+}
+.shot img{
+  width:100%; height:100%;
+  object-fit:cover;
+  object-position:center 45%;
+}
+
+/* passeio com uma única foto: banner que ocupa o card inteiro */
+.tour__gal--uma{ scroll-snap-type:none; }
+.tour__gal--uma .shot{
+  width:100%;
+  aspect-ratio:4 / 3;
+}
+
+.gal-hint{
+  margin:-4px 18px 10px;
+  font-size:.74rem;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  opacity:.65;
+}
+
+@media (min-width:640px){
+  .shot{ width:min(40%, 200px); }
+  .tour__gal--uma .shot{ aspect-ratio:3 / 2; }
+}
+
 .tour__tag{
   display:inline-block;
   font-weight:800; font-size:.68rem;
