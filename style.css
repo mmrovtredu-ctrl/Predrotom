@@ -376,6 +376,14 @@ a{ color:inherit; text-decoration:none; }
   display:block;
 }
 
+/* variante sem moldura/anel colorido — usada nos cards de hospedagem */
+.tour__icon--plain{
+  padding:0;
+  background:none;
+  box-shadow:none;
+}
+.tour__icon--plain img{ border-radius:16px; }
+
 /* ---------- Galeria de fotos do passeio ---------- */
 .tour__gal{
   display:flex;
@@ -674,6 +682,40 @@ a{ color:inherit; text-decoration:none; }
   font-size:.78rem;
   color:var(--ink-soft);
   text-align:center;
+}
+
+/* ---------- Mini-formulário de reserva (dentro do .room) ---------- */
+.room__form{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.room__form-row{
+  display:flex;
+  gap:8px;
+}
+.room__input{
+  width:100%;
+  min-height:44px;
+  padding:0 12px;
+  border:1.5px solid var(--line);
+  border-radius:10px;
+  background:#fff;
+  font-family:inherit;
+  font-size:.9rem;
+  color:var(--ink);
+}
+.room__input:focus{
+  outline:none;
+  border-color:var(--sun);
+}
+.room__form-row .room__input{ flex:1 1 0; min-width:0; }
+.room__btn--form{
+  width:100%;
+  justify-content:center;
+  border:none;
+  cursor:pointer;
+  font-family:inherit;
 }
 
 /* =========================================================
