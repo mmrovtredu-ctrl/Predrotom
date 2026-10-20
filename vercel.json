@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "predrotom.vercel.app" }],
+      "destination": "https://www.pedrotom.com.br/:path*",
+      "permanent": true
+    }
+  ]
+}

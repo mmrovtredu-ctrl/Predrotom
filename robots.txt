@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://predrotom.vercel.app/sitemap.xml
+Sitemap: https://www.pedrotom.com.br/sitemap.xml
