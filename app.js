@@ -335,70 +335,68 @@
   }
 
   /* =========================================================
-     AVALIAÇÕES DO GOOGLE (via /api/reviews)
+     AVALIAÇÕES DO GOOGLE — copiadas da ficha "Petom turismo"
+     Para atualizar: edite NOTA, TOTAL e a lista abaixo.
      ========================================================= */
+  var GOOGLE = {
+    nota: 5.0,
+    total: 10,
+    avaliacoes: [
+      { nome: 'Andre L.', texto: 'Atendimento totalmente fora da curva, muito atencioso, prestativo, bem diferenciado. O que chamou mais atenção foi como sempre ajudou e as melhores indicações para aproveitar melhor os passeios e locais para comer e etc.. quer conhecer Tutóia, super recomendo!!!' },
+      { nome: 'Rosa F.', texto: 'Excelente! A cordialidade e o profissionalismo do João Pedro desde o primeiro contato foram determinantes para contratarmos o passeio. 👏👏👏' },
+      { nome: 'Davi H.', texto: 'As indicações de passeio foram fantásticas, mas não melhor que o atendimento que recebamos. Saímos com a sensação de ter sido abençoados por ter a oportunidade de conhecer um lugar tão bonito sendo atendido por pessoas tão eficientes e gentis. Recomendo muito a agência Petom Turismo.' },
+      { nome: 'Rosiane C.', texto: 'Muito bom o passeio, lugar encantador e o guia super dedicado.' },
+      { nome: 'Claudia J.', texto: 'Petom Turismo - Credibilidade, Confiança, Presteza, Cordialidade! Tudo isso e algo a mais. O trabalho do Pedro com o cliente, excede as expectativas, dúvidas dirmidas ao máximo. Esgotando todas as prerrogativas SERVICO DE EXCELÊNCIA.' },
+      { nome: 'Adriano B.', texto: 'Uma experiência de aventura e natureza , Recomento muito lindo' },
+      { nome: 'Kleper J.', texto: 'Passeio muito bom , curtir demais , recomendo demais' },
+      { nome: 'João G.', texto: 'Melhor passeio da cidade !!' },
+      { nome: 'Gilmara G.', texto: 'Perfeito' }
+    ]
+  };
+  var CORES_AVATAR = ['#1A73E8', '#D93025', '#188038', '#E37400', '#8E24AA', '#00897B', '#C2185B', '#5E35B1', '#6D4C41'];
+
   function estrelas(n) {
     var r = Math.round(n || 0), s = '';
     for (var i = 1; i <= 5; i++) s += i <= r ? '★' : '☆';
     return s;
   }
   function setupAvaliacoes() {
-    var caixas = document.querySelectorAll('[data-reviews]');
-    if (!caixas.length || !window.fetch) return;
-    fetch('/api/reviews', { headers: { accept: 'application/json' } })
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (d) {
-        if (!d || !d.rating) return;
-        caixas.forEach(function (c) { pintarAvaliacoes(c, d); });
-      })
-      .catch(function () { /* sem dados: ficam só os botões para o Google */ });
-  }
-  function pintarAvaliacoes(c, d) {
-    var resumo = c.querySelector('.rv__summary');
-    if (resumo) {
-      resumo.querySelector('.rv__score').textContent = d.rating.toFixed(1).replace('.', ',');
-      var st = resumo.querySelector('.rv__stars');
-      st.textContent = estrelas(d.rating);
-      st.setAttribute('aria-label', 'Nota ' + d.rating.toFixed(1).replace('.', ',') + ' de 5');
-      resumo.querySelector('.rv__count').textContent = d.total + (d.total === 1 ? ' avaliação' : ' avaliações') + ' no Google';
-      resumo.hidden = false;
-    }
-    var lista = c.querySelector('.rv__list');
-    if (lista && d.reviews && d.reviews.length) {
+    var nota = GOOGLE.nota.toFixed(1).replace('.', ',');
+    document.querySelectorAll('[data-reviews]').forEach(function (c) {
+      var r = c.querySelector('[data-gr-rating]'); if (r) r.textContent = nota;
+      var st = c.querySelector('[data-gr-stars]');
+      if (st) { st.textContent = estrelas(GOOGLE.nota); st.setAttribute('aria-label', 'Nota ' + nota + ' de 5'); }
+      var ct = c.querySelector('[data-gr-count]'); if (ct) ct.textContent = GOOGLE.total + ' avaliações';
+      var lista = c.querySelector('[data-gr-list]');
+      if (!lista) return;
       lista.innerHTML = '';
-      d.reviews.forEach(function (rv) {
-        if (!rv.text) return;
-        var art = el('article', 'rv');
-        var who = el('div', 'rv__who');
-        if (rv.photo) {
-          var img = document.createElement('img');
-          img.className = 'rv__ava'; img.src = rv.photo; img.alt = ''; img.loading = 'lazy';
-          img.referrerPolicy = 'no-referrer';
-          who.appendChild(img);
-        } else {
-          who.appendChild(el('span', 'rv__ava rv__ava--txt', (rv.author || '?').charAt(0).toUpperCase()));
-        }
-        var nomeBox = el('div');
-        var nome;
-        if (rv.authorUri) {
-          nome = el('a', 'rv__name', rv.author || 'Cliente Google');
-          nome.href = rv.authorUri; nome.target = '_blank'; nome.rel = 'noopener nofollow';
-        } else {
-          nome = el('span', 'rv__name', rv.author || 'Cliente Google');
-        }
-        nomeBox.appendChild(nome);
-        nomeBox.appendChild(el('div', 'rv__when', rv.when || ''));
-        who.appendChild(nomeBox);
-        art.appendChild(who);
-        var st = el('div', 'rv__stars', estrelas(rv.rating));
-        st.setAttribute('aria-label', 'Nota ' + rv.rating + ' de 5');
-        art.appendChild(st);
-        art.appendChild(el('p', 'rv__text', rv.text));
-        art.appendChild(el('p', 'rv__src', 'Avaliação do Google Maps'));
-        lista.appendChild(art);
+      GOOGLE.avaliacoes.forEach(function (a, i) {
+        var card = el('article', 'gr-card');
+        var top = el('div', 'gr-card__top');
+        var ava = el('span', 'gr-ava', a.nome.charAt(0).toUpperCase());
+        ava.style.background = CORES_AVATAR[i % CORES_AVATAR.length];
+        ava.setAttribute('aria-hidden', 'true');
+        var quem = el('div');
+        quem.appendChild(el('p', 'gr-name', a.nome));
+        quem.appendChild(el('p', 'gr-meta', 'Avaliação no Google'));
+        top.appendChild(ava); top.appendChild(quem);
+        card.appendChild(top);
+        var st2 = el('div', 'gr__stars', estrelas(a.nota || 5));
+        st2.setAttribute('aria-label', 'Nota ' + (a.nota || 5) + ' de 5');
+        card.appendChild(st2);
+        var txt = el('p', 'gr-text', a.texto);
+        card.appendChild(txt);
+        var mais = el('button', 'gr-more', 'Ler mais');
+        mais.type = 'button'; mais.hidden = true;
+        mais.addEventListener('click', function () {
+          var aberto = card.classList.toggle('is-open');
+          mais.textContent = aberto ? 'Ler menos' : 'Ler mais';
+        });
+        card.appendChild(mais);
+        lista.appendChild(card);
+        if (txt.scrollHeight > txt.clientHeight + 2) mais.hidden = false;
       });
-    }
-    if (d.mapsUri) c.querySelectorAll('[data-maps]').forEach(function (a) { a.href = d.mapsUri; });
+    });
   }
 
   /* =========================================================
