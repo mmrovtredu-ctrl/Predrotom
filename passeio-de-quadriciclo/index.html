@@ -2,14 +2,26 @@
 <html lang="pt-BR">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R9DDHQGJYB"></script>
+    <!-- Google tag (gtag.js) — só carrega depois que o visitante aceita os cookies (LGPD) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-R9DDHQGJYB');
+      (function () {
+        var aceito = false;
+        try { aceito = localStorage.getItem('petom_cookies') === 'aceito'; } catch (e) {}
+        window.petomGA = function () {
+          if (window.petomGA.ok) return;
+          window.petomGA.ok = true;
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-R9DDHQGJYB';
+          document.head.appendChild(s);
+        };
+        gtag('consent', 'default', { analytics_storage: aceito ? 'granted' : 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+        gtag('js', new Date());
+        gtag('config', 'G-R9DDHQGJYB');
+        if (aceito) window.petomGA();
+      })();
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -298,6 +310,7 @@
 
             <p class="foot__line">Reservas e informações: <a href="tel:+5598991021321">(98) 99102-1321</a></p>
             <p class="foot__cnpj">CNPJ: 63.475.310/0001-82</p>
+            <button type="button" class="foot__cookies" data-cookies>Preferências de cookies</button>
         </footer>
 
         <a class="fab" href="https://wa.me/5598991021321?text=Ol%C3%A1%2C%20Petom%20Tur%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20os%20passeios%20em%20Tut%C3%B3ia%20e%20regi%C3%A3o." target="_blank" rel="noopener" aria-label="Falar com a Petom Tur no WhatsApp">

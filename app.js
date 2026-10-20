@@ -593,7 +593,59 @@
     }, true);
   }
 
+  /* =========================================================
+     AVISO DE COOKIES (LGPD) — o Analytics só carrega após "Aceitar"
+     ========================================================= */
+  function setupCookies() {
+    var CHAVE = 'petom_cookies', banner = null;
+    function ler() { try { return localStorage.getItem(CHAVE); } catch (e) { return null; } }
+    function gravar(v) { try { localStorage.setItem(CHAVE, v); } catch (e) { /* sem storage: vale só nesta visita */ } }
+    function fechar() { if (banner) { banner.remove(); banner = null; } }
+    function apagarCookiesGA() {
+      var partes = location.hostname.split('.');
+      document.cookie.split(';').forEach(function (c) {
+        var nome = c.split('=')[0].trim();
+        if (!/^_ga/.test(nome)) return;
+        document.cookie = nome + '=; Max-Age=0; path=/';
+        for (var i = 0; i < partes.length - 1; i++) {
+          document.cookie = nome + '=; Max-Age=0; path=/; domain=.' + partes.slice(i).join('.');
+        }
+      });
+    }
+    function aceitar() {
+      gravar('aceito');
+      if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: 'granted' });
+      if (typeof window.petomGA === 'function') window.petomGA();
+      fechar();
+    }
+    function recusar() {
+      gravar('recusado');
+      if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: 'denied' });
+      apagarCookiesGA();
+      fechar();
+    }
+    function mostrar() {
+      if (banner) return;
+      banner = el('div', 'ck');
+      banner.setAttribute('role', 'region');
+      banner.setAttribute('aria-label', 'Aviso de cookies');
+      banner.innerHTML =
+        '<p class="ck__txt"><strong>Cookies</strong>Usamos cookies do Google Analytics para medir as visitas e melhorar o site. Eles só são ativados se você aceitar.' +
+        '<span>Você pode mudar sua escolha quando quiser em “Preferências de cookies”, no rodapé.</span></p>' +
+        '<div class="ck__btns"><button type="button" class="ck__btn ck__btn--no">Recusar</button>' +
+        '<button type="button" class="ck__btn ck__btn--ok">Aceitar</button></div>';
+      banner.querySelector('.ck__btn--ok').addEventListener('click', aceitar);
+      banner.querySelector('.ck__btn--no').addEventListener('click', recusar);
+      document.body.appendChild(banner);
+    }
+    if (!ler()) mostrar();
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('[data-cookies]')) { e.preventDefault(); mostrar(); }
+    });
+  }
+
   function iniciar() {
+    setupCookies();
     setupCliquesWhats();
     setupReserva();
     setupAvaliacoes();
