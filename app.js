@@ -83,6 +83,9 @@
     if (txt != null) e.textContent = txt;
     return e;
   }
+  function evento(nome, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', nome, params || {});
+  }
   function abrirWhats(msg, numero) {
     var url = 'https://wa.me/' + (numero || WHATS) + '?text=' + encodeURIComponent(msg);
     var w = window.open(url, '_blank');
@@ -323,6 +326,7 @@
       linhas.push('Nome: ' + nome);
       linhas.push('');
       linhas.push('Pode confirmar a disponibilidade?');
+      evento('generate_lead', { tipo: 'passeio', passeio: tour.nome, pessoas: pessoas.valor, value: Math.round(est.valor * 100) / 100, currency: 'BRL' });
       abrirWhats(linhas.join('\n'));
       dlg.close();
     }
@@ -553,6 +557,7 @@
       linhas.push('Nome: ' + nome);
       linhas.push('');
       linhas.push('Pode confirmar disponibilidade e valor final?');
+      evento('generate_lead', { tipo: 'pacote', passeios: passeios.join(','), hospedagem: c.quarto ? c.quarto.nome : 'nenhuma', pessoas: pessoas.valor, value: Math.round(c.total * 100) / 100, currency: 'BRL' });
       abrirWhats(linhas.join('\n'));
     });
 
@@ -577,7 +582,19 @@
     atualizar();
   }
 
+  function setupCliquesWhats() {
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href*="wa.me/"]');
+      if (!a || a.hasAttribute('data-reserva')) return;
+      evento('contato_whatsapp', { origem: a.className || 'link' });
+    });
+    document.addEventListener('submit', function (e) {
+      if (e.target.classList && e.target.classList.contains('room__form')) evento('generate_lead', { tipo: 'pousada' });
+    }, true);
+  }
+
   function iniciar() {
+    setupCliquesWhats();
     setupReserva();
     setupAvaliacoes();
     setupPacotes();
