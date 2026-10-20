@@ -16,6 +16,8 @@
 .link-more svg{ width:16px; height:16px; }
 .link-more:hover{ text-decoration:underline; }
 
+.room__unit{ font-family:var(--font-body); font-weight:700; font-size:.76rem; color:var(--ink-soft); }
+
 /* ---------- chips de pagamento ---------- */
 .pay{
   display:flex; flex-wrap:wrap; justify-content:center; gap:8px;
