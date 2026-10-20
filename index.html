@@ -33,6 +33,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="components.css">
 
     <!-- SEO: dados estruturados (schema.org) -->
     <script type="application/ld+json">
@@ -46,8 +47,12 @@
       "image": "https://www.pedrotom.com.br/petom-logo.png",
       "telephone": "+5598991021321",
       "priceRange": "R$139,99 - R$499,99",
+      "paymentAccepted": "Dinheiro, Cartão, Pix",
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Petom%20turismo%20Tut%C3%B3ia&query_place_id=ChIJBeaK3w4L7gcR8xwrpM24xJY",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "R. Magalhães de Almeida, Barra",
+        "postalCode": "65580-000",
         "addressLocality": "Tutóia",
         "addressRegion": "MA",
         "addressCountry": "BR"
@@ -67,6 +72,78 @@
         { "@type": "Offer", "name": "Passeio de Quadriciclo", "price": "499.99", "priceCurrency": "BRL" }
       ]
     }
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Como faço a reserva?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Escolha o passeio, toque em Escolher data e reservar, marque a data no calendário e envie pelo WhatsApp. A equipe da Petom Tur confirma a disponibilidade."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso escolher qualquer data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Você escolhe a data que quiser no calendário e envia a reserva pelo WhatsApp. A equipe da Petom Tur confirma a disponibilidade."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quais as formas de pagamento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dinheiro, cartão ou Pix."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual a diferença entre buggy e jardineira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O buggy é privativo (R$ 449,99 pelo veículo exclusivo) e sai de manhã ou à tarde. A jardineira é compartilhada (R$ 139,99 por pessoa) e sai conforme a formação do grupo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quais os horários dos passeios?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Buggy: manhã (09h00–13h30) ou tarde (14h30–18h30). Circuito Rios: saída às 09h30, retorno por volta de 14h30. Lancha no Delta: embarque às 14h no píer, retorno por volta de 18h30. Jardineira e quadriciclo: horário confirmado pelo WhatsApp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A revoada dos guarás é garantida?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. A revoada é um fenômeno natural e depende das condições do dia. Veja o passeio de lancha pelo Delta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que levar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Protetor solar, óculos, roupa leve, água e câmera. No Circuito Rios, leve também toalha, troca de roupa e repelente. Na lancha, capa para celular."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vocês indicam hospedagem?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Veja as pousadas parceiras ou monte um pacote com hospedagem e passeios."
+      }
+    }
+  ]
+}
     </script>
 </head>
 
@@ -166,7 +243,7 @@
         <main class="section" id="passeios">
             <span class="eyebrow">Experiências selecionadas</span>
             <h2>Escolha seu <span class="u">passeio</span></h2>
-            <p class="section__sub">Toque em “Ver detalhes” para conhecer o roteiro completo e reservar pelo WhatsApp.</p>
+            <p class="section__sub">Escolha o passeio, marque a data no calendário e envie a reserva pelo WhatsApp.</p>
 
             <div class="tours">
 
@@ -230,9 +307,10 @@
                         </dl>
                     </details>
 
-                    <a class="btn-wa" href="https://wa.me/5598991021321?text=Ol%C3%A1%2C%20Petom%20Tur%21%20Tenho%20interesse%20no%20passeio%20%2ABuggy%20%E2%80%93%20Pequenos%20Len%C3%A7%C3%B3is%2A%20%E2%80%94%20R%24%20449%2C99%20%28ve%C3%ADculo%20exclusivo%29.%20Pode%20me%20passar%20disponibilidade%20e%20confirmar%20minha%20reserva%3F"
-                        target="_blank" rel="noopener" aria-label="Reservar o passeio de Buggy pelo WhatsApp">
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-5.9c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.6 6.6 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5s0-.4 0-.5-.6-1.5-.8-2-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6.5 9c0 1.2.9 2.4 1 2.6s1.7 2.7 4.2 3.8c2.1.9 2.5.7 3 .7s1.5-.6 1.7-1.2.2-1.1.1-1.2-.3-.2-.6-.4z"/></svg>                        Reservar pelo WhatsApp
+                    <a class="link-more" href="/passeio-de-buggy">Ver página completa do passeio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+
+                    <a class="btn-wa" href="https://wa.me/5598991021321?text=Ol%C3%A1%2C%20Petom%20Tur%21%20Tenho%20interesse%20no%20passeio%20%2ABuggy%20%E2%80%93%20Pequenos%20Len%C3%A7%C3%B3is%2A%20%E2%80%94%20R%24%20449%2C99%20%28ve%C3%ADculo%20exclusivo%29.%20Pode%20me%20passar%20disponibilidade%20e%20confirmar%20minha%20reserva%3F" data-reserva="buggy"
+                        target="_blank" rel="noopener" aria-label="Escolher data e reservar o passeio Buggy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Escolher data e reservar
                     </a>
                 </article>
 
@@ -281,9 +359,10 @@
                         </dl>
                     </details>
 
-                    <a class="btn-wa" href="https://wa.me/5598991021321?text=Ol%C3%A1%2C%20Petom%20Tur%21%20Tenho%20interesse%20no%20passeio%20%2AJardineira%20%E2%80%93%20Pequenos%20Len%C3%A7%C3%B3is%2A%20%E2%80%94%20R%24%20139%2C99%20%28por%20pessoa%29.%20Pode%20me%20passar%20disponibilidade%20e%20confirmar%20minha%20reserva%3F"
-                        target="_blank" rel="noopener" aria-label="Reservar o passeio de Jardineira pelo WhatsApp">
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-5.9c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.6 6.6 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5s0-.4 0-.5-.6-1.5-.8-2-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6.5 9c0 1.2.9 2.4 1 2.6s1.7 2.7 4.2 3.8c2.1.9 2.5.7 3 .7s1.5-.6 1.7-1.2.2-1.1.1-1.2-.3-.2-.6-.4z"/></svg>                        Reservar pelo WhatsApp
+                    <a class="link-more" href="/passeio-de-jardineira">Ver página completa do passeio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+
+                    <a class="btn-wa" href="https://wa.me/5598991021321?text=Ol%C3%A1%2C%20Petom%20Tur%21%20Tenho%20interesse%20no%20passeio%20%2AJardineira%20%E2%80%93%20Pequenos%20Len%C3%A7%C3%B3is%2A%20%E2%80%94%20R%24%20139%2C99%20%28por%20pessoa%29.%20Pode%20me%20passar%20disponibilidade%20e%20confirmar%20minha%20reserva%3F" data-reserva="jardineira"
+                        target="_blank" rel="noopener" aria-label="Escolher data e reservar o passeio Jardineira"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Escolher data e reservar
                     </a>
                 </article>
 
@@ -341,9 +420,10 @@
                         </dl>
                     </details>
 
-                    <a class="btn-wa" href="https://wa.me/5598991021321?text=Ol%C3%A1%2C%20Petom%20Tur%21%20Tenho%20interesse%20no%20passeio%20%2ACircuito%20Rios%20%E2%80%93%20Jardineira%2A%20%E2%80%94%20R%24%20169%2C99%20%28por%20pessoa%29.%20Pode%20me%20passar%20disponibilidade%20e%20confirmar%20minha%20reserva%3F"
-                        target="_blank" rel="noopener" aria-label="Reservar o Circuito Rios pelo WhatsApp">
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-5.9c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.6 6.6 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5s0-.4 0-.5-.6-1.5-.8-2-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6.5 9c0 1.2.9 2.4 1 2.6s1.7 2.7 4.2 3.8c2.1.9 2.5.7 3 .7s1.5-.6 1.7-1.2.2-1.1.1-1.2-.3-.2-.6-.4z"/></svg>                        Reservar pelo WhatsApp
+                    <a class="link-more" href="/circuito-rios">Ver página completa do passeio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+
+                    <a class="btn-wa" href="https://wa.me/5598991021321?text=Ol%C3%A1%2C%20Petom%20Tur%21%20Tenho%20interesse%20no%20passeio%20%2ACircuito%20Rios%20%E2%80%93%20Jardineira%2A%20%E2%80%94%20R%24%20169%2C99%20%28por%20pessoa%29.%20Pode%20me%20passar%20disponibilidade%20e%20confirmar%20minha%20reserva%3F" data-reserva="circuito-rios"
+                        target="_blank" rel="noopener" aria-label="Escolher data e reservar o passeio Circuito Rios"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Escolher data e reservar
                     </a>
                 </article>
 
@@ -399,9 +479,10 @@
                         </dl>
                     </details>
 
-                    <a class="btn-wa" href="https://wa.me/5598991021321?text=Ol%C3%A1%2C%20Petom%20Tur%21%20Tenho%20interesse%20no%20passeio%20%2ALancha%20%E2%80%93%20Delta%20%26%20Revoada%2A%20%E2%80%94%20R%24%20169%2C99%20%28por%20pessoa%29.%20Pode%20me%20passar%20disponibilidade%20e%20confirmar%20minha%20reserva%3F"
-                        target="_blank" rel="noopener" aria-label="Reservar o passeio de Lancha pelo WhatsApp">
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-5.9c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.6 6.6 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5s0-.4 0-.5-.6-1.5-.8-2-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6.5 9c0 1.2.9 2.4 1 2.6s1.7 2.7 4.2 3.8c2.1.9 2.5.7 3 .7s1.5-.6 1.7-1.2.2-1.1.1-1.2-.3-.2-.6-.4z"/></svg>                        Reservar pelo WhatsApp
+                    <a class="link-more" href="/passeio-de-lancha-delta-revoada">Ver página completa do passeio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+
+                    <a class="btn-wa" href="https://wa.me/5598991021321?text=Ol%C3%A1%2C%20Petom%20Tur%21%20Tenho%20interesse%20no%20passeio%20%2ALancha%20%E2%80%93%20Delta%20%26%20Revoada%2A%20%E2%80%94%20R%24%20169%2C99%20%28por%20pessoa%29.%20Pode%20me%20passar%20disponibilidade%20e%20confirmar%20minha%20reserva%3F" data-reserva="lancha"
+                        target="_blank" rel="noopener" aria-label="Escolher data e reservar o passeio Lancha Delta & Revoada"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Escolher data e reservar
                     </a>
                 </article>
 
@@ -452,14 +533,30 @@
                         </dl>
                     </details>
 
-                    <a class="btn-wa" href="https://wa.me/5598991021321?text=Ol%C3%A1%2C%20Petom%20Tur%21%20Tenho%20interesse%20no%20passeio%20%2AQuadriciclo%20%E2%80%93%20Com%20guia%2A%20%E2%80%94%20R%24%20499%2C99%20%28duas%20pessoas%29.%20Pode%20me%20passar%20disponibilidade%20e%20confirmar%20minha%20reserva%3F"
-                        target="_blank" rel="noopener" aria-label="Reservar o passeio de Quadriciclo pelo WhatsApp">
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-5.9c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.6 6.6 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5s0-.4 0-.5-.6-1.5-.8-2-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6.5 9c0 1.2.9 2.4 1 2.6s1.7 2.7 4.2 3.8c2.1.9 2.5.7 3 .7s1.5-.6 1.7-1.2.2-1.1.1-1.2-.3-.2-.6-.4z"/></svg>                        Reservar pelo WhatsApp
+                    <a class="link-more" href="/passeio-de-quadriciclo">Ver página completa do passeio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+
+                    <a class="btn-wa" href="https://wa.me/5598991021321?text=Ol%C3%A1%2C%20Petom%20Tur%21%20Tenho%20interesse%20no%20passeio%20%2AQuadriciclo%20%E2%80%93%20Com%20guia%2A%20%E2%80%94%20R%24%20499%2C99%20%28duas%20pessoas%29.%20Pode%20me%20passar%20disponibilidade%20e%20confirmar%20minha%20reserva%3F" data-reserva="quadriciclo"
+                        target="_blank" rel="noopener" aria-label="Escolher data e reservar o passeio Quadriciclo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Escolher data e reservar
                     </a>
                 </article>
 
             </div>
             <!-- /tours -->
+
+            <!-- ============ AVALIAÇÕES GOOGLE ============ -->
+            <section class="section" id="avaliacoes" aria-label="Avaliações dos clientes" data-reviews>
+                <span class="eyebrow">Avaliações</span>
+                <h2>Quem foi, <span class="u">recomenda</span></h2>
+                <div class="rv__summary" hidden>
+                    <span class="rv__score"></span>
+                    <div><div class="rv__stars"></div><div class="rv__count"></div></div>
+                </div>
+                <div class="rv__list"></div>
+                <div class="rv__btns">
+                    <a class="btn-line" data-maps href="https://www.google.com/maps/search/?api=1&amp;query=Petom%20turismo%20Tut%C3%B3ia&amp;query_place_id=ChIJBeaK3w4L7gcR8xwrpM24xJY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>Ver avaliações no Google</a>
+                    <a class="btn-line btn-line--sun" href="https://search.google.com/local/writereview?placeid=ChIJBeaK3w4L7gcR8xwrpM24xJY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg>Avaliar a Petom Tur no Google</a>
+                </div>
+            </section>
 
             <!-- ============ ONDE FICAR / HOSPEDAGEM PARCEIRA ============ -->
             <section class="section" id="hospedagem" aria-label="Onde ficar em Tutóia">
@@ -759,12 +856,39 @@
                 </div>
             </section>
 
+            <!-- ============ PACOTES ============ -->
+            <section class="section" id="pacotes" aria-label="Pacotes de hospedagem e passeios">
+                <span class="eyebrow">Pacotes</span>
+                <h2>Hospedagem + <span class="u">passeios</span></h2>
+                <div class="pk-teaser">
+                    <p>Junte os passeios com uma pousada parceira, escolha as datas e veja a estimativa do pacote na hora. A equipe confirma tudo pelo WhatsApp.</p>
+                    <div class="pk-preset" style="box-shadow:none;border:0;padding:12px 0 0"><ul><li>Lençóis &amp; Delta</li><li>Tutóia completa</li><li>Econômico em grupo</li></ul></div>
+                    <a class="btn-line btn-line--sun" href="/pacotes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Montar meu pacote</a>
+                </div>
+            </section>
+
             <!-- ============ SOBRE / SEO ============ -->
             <section class="section" aria-label="Sobre a Petom Tur">
                 <span class="eyebrow">Quem somos</span>
                 <h2>Sua <span class="u">agência de turismo em Tutóia</span></h2>
                 <p>A Petom Tur é uma agência de turismo em Tutóia (MA) e agência de passeios em Tutóia especializada em roteiros pelos Pequenos Lençóis Maranhenses e pelo Delta do Parnaíba. Se você procura por turismo em Tutóia ou passeios turísticos em Tutóia, chegou ao lugar certo: organizamos excursões, tours pelos Pequenos Lençóis e passeios guiados com guias credenciados e veículos regularizados.</p>
-                <p>Entre os roteiros mais procurados estão o passeio de 4x4 (buggy) e o passeio de quadriciclo em Tutóia pelas dunas dos Pequenos Lençóis, além do circuito de jardineira e do passeio de lancha pelo Delta do Parnaíba com a revoada dos guarás. Monte seu roteiro pelos Pequenos Lençóis Maranhenses com quem conhece cada trilha, praia e balneário da região.</p>
+                <p>Entre os roteiros mais procurados estão o <a href="/passeio-de-buggy" style="text-decoration:underline">passeio de 4x4 (buggy)</a> e o <a href="/passeio-de-quadriciclo" style="text-decoration:underline">passeio de quadriciclo em Tutóia</a> pelas dunas dos Pequenos Lençóis, além do <a href="/circuito-rios" style="text-decoration:underline">circuito de jardineira</a> e do <a href="/passeio-de-lancha-delta-revoada" style="text-decoration:underline">passeio de lancha pelo Delta do Parnaíba com a revoada dos guarás</a>. Monte seu roteiro pelos Pequenos Lençóis Maranhenses com quem conhece cada trilha, praia e balneário da região.</p>
+            </section>
+
+            <!-- ============ PERGUNTAS FREQUENTES ============ -->
+            <section class="section" id="duvidas" aria-label="Perguntas frequentes">
+                <span class="eyebrow">Dúvidas</span>
+                <h2>Perguntas <span class="u">frequentes</span></h2>
+                <div class="faq">
+                <details><summary>Como faço a reserva?</summary><div class="faq__a"><p>Escolha o passeio, toque em <strong>Escolher data e reservar</strong>, marque a data no calendário e envie pelo WhatsApp. A equipe da Petom Tur confirma a disponibilidade.</p></div></details>
+                <details><summary>Posso escolher qualquer data?</summary><div class="faq__a"><p>Sim. Você escolhe a data que quiser no calendário e envia a reserva pelo WhatsApp. A equipe da Petom Tur confirma a disponibilidade.</p></div></details>
+                <details><summary>Quais as formas de pagamento?</summary><div class="faq__a"><p>Dinheiro, cartão ou Pix.</p></div></details>
+                <details><summary>Qual a diferença entre buggy e jardineira?</summary><div class="faq__a"><p>O <a href="/passeio-de-buggy">buggy</a> é privativo (R$ 449,99 pelo veículo exclusivo) e sai de manhã ou à tarde. A <a href="/passeio-de-jardineira">jardineira</a> é compartilhada (R$ 139,99 por pessoa) e sai conforme a formação do grupo.</p></div></details>
+                <details><summary>Quais os horários dos passeios?</summary><div class="faq__a"><p>Buggy: manhã (09h00–13h30) ou tarde (14h30–18h30). Circuito Rios: saída às 09h30, retorno por volta de 14h30. Lancha no Delta: embarque às 14h no píer, retorno por volta de 18h30. Jardineira e quadriciclo: horário confirmado pelo WhatsApp.</p></div></details>
+                <details><summary>A revoada dos guarás é garantida?</summary><div class="faq__a"><p>Não. A revoada é um fenômeno natural e depende das condições do dia. Veja o <a href="/passeio-de-lancha-delta-revoada">passeio de lancha pelo Delta</a>.</p></div></details>
+                <details><summary>O que levar?</summary><div class="faq__a"><p>Protetor solar, óculos, roupa leve, água e câmera. No Circuito Rios, leve também toalha, troca de roupa e repelente. Na lancha, capa para celular.</p></div></details>
+                <details><summary>Vocês indicam hospedagem?</summary><div class="faq__a"><p>Sim. Veja as <a href="#hospedagem">pousadas parceiras</a> ou monte um <a href="/pacotes">pacote com hospedagem e passeios</a>.</p></div></details>
+                </div>
             </section>
 
             <!-- ============ CONCIERGE ============ -->
@@ -775,6 +899,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L19 18l-1 4a16 16 0 0 1-13-14z"/></svg> (98) 99102-1321
                 </a>
                 <p class="note">Confirmação imediata • Suporte completo durante todo o passeio</p>
+                <div class="pay" aria-label="Formas de pagamento"><span>💵 Dinheiro</span><span>💳 Cartão</span><span>⚡ Pix</span></div>
                 <a class="btn-wa" href="https://wa.me/5598991021321?text=Ol%C3%A1%2C%20Petom%20Tur%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20os%20passeios%20em%20Tut%C3%B3ia%20e%20regi%C3%A3o." target="_blank" rel="noopener">
                     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-5.9c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.6 6.6 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5s0-.4 0-.5-.6-1.5-.8-2-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6.5 9c0 1.2.9 2.4 1 2.6s1.7 2.7 4.2 3.8c2.1.9 2.5.7 3 .7s1.5-.6 1.7-1.2.2-1.1.1-1.2-.3-.2-.6-.4z"/></svg>                    Falar no WhatsApp
                 </a>
@@ -786,6 +911,8 @@
             <img class="foot__logo" src="petom-logo.png" width="84" height="84" alt="Petom Tur">
             <p class="foot__name">Petom Tur</p>
             <p class="foot__regions">Tutóia • Paulino Neves • Barreirinhas</p>
+
+            <nav class="foot__nav" aria-label="Páginas do site"><a href="/">Início</a><a href="/passeio-de-buggy">Buggy</a><a href="/passeio-de-jardineira">Jardineira</a><a href="/circuito-rios">Circuito Rios</a><a href="/passeio-de-lancha-delta-revoada">Lancha Delta &amp; Revoada</a><a href="/passeio-de-quadriciclo">Quadriciclo</a><a href="/pacotes">Pacotes</a><a href="/#duvidas">Dúvidas</a></nav>
 
             <div class="foot__badges">
                 <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Guias credenciados</span>
@@ -823,6 +950,7 @@
         return false;
     }
     </script>
+    <script src="app.js" defer></script>
 </body>
 
 </html>

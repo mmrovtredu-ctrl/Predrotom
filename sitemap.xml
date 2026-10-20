@@ -3,7 +3,36 @@
   <url>
     <loc>https://www.pedrotom.com.br/</loc>
     <lastmod>2026-10-20</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.pedrotom.com.br/passeio-de-buggy</loc>
+    <lastmod>2026-10-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pedrotom.com.br/passeio-de-jardineira</loc>
+    <lastmod>2026-10-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pedrotom.com.br/circuito-rios</loc>
+    <lastmod>2026-10-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pedrotom.com.br/passeio-de-lancha-delta-revoada</loc>
+    <lastmod>2026-10-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pedrotom.com.br/passeio-de-quadriciclo</loc>
+    <lastmod>2026-10-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pedrotom.com.br/pacotes</loc>
+    <lastmod>2026-10-20</lastmod>
+    <priority>0.7</priority>
   </url>
 </urlset>
